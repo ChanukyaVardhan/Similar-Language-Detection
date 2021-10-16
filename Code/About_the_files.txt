@@ -1,0 +1,45 @@
+project_train.txt - Complete Train Data initial
+project_train_processed.txt - After 1)
+train_new.txt - Final Train Data
+validation_new.txt - Final Validation Data
+i.txt - Validation Data for language i.
+Features.txt - Contains features for all the languages after Stage 1.
+
+
+
+1) First run this file
+pre_process_input.py
+	processes the initial train raw data.
+
+2) Next run this file
+train_validation.py
+	Seperate Train and Validation Data
+
+3) Next run this file
+eachlang.py
+	Seperates Validation data into seperate files for each language
+	This generates i.txt for each language i i.e., all the validation data of each language goes into the that language numbered file.
+
+4) Next run this file
+word_count_language.py
+	Form features by taking top thousand words(by tf idf score) and tests on validation data and writes feature vector into Features.txt
+
+5) Use it to test the first stage model by giving an input file
+grouping.py
+	Reads the feature.txt file and gives the grouping for an input file
+
+6) Next run this file
+labels_data.py
+	Write all the sentences of train data for all the languages which belong to a group into seperate files.
+
+7) Next run this file for each group
+svm.py
+	generates the svm model and stores in result{i}_{vecsize}
+
+8) Next run this file for each group to test the model
+check.py
+	reads the result files from 6) and predicts the final language for input file.
+
+9) Next run this file
+grouping_test.py
+	This is useful for testing the data.
